@@ -60,6 +60,10 @@ form {
 .events {
 }
 
+#tEvents{
+  overflow: scroll;
+}
+
 .hotel_food {
 }
 

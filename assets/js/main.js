@@ -5,6 +5,7 @@ var cty = "";   //holds the city the user searched
 var stt = "";   //holds the state the user searched
 
 var flg = false; //boolean flag for input validation
+var flg2 = false;
 
 var database = firebase.database(); //database refrence
 
@@ -30,6 +31,38 @@ $(document).ready(weather());{
 
 }
 
+//ticketmaster api call
+
+function ticketmaster() {
+
+  $("#tEvents").empty();
+
+  console.log("MADE IT HERE!");
+  var apiKey = "AGoGvNzEmLC1H1XIJtVipXmDeRDKMPQT";
+
+  var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cty + "&apikey=" + apiKey;
+
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"}).then(function(response) {
+        console.log(response._embedded.events);
+        for(var i = 0; i < response._embedded.events.length; i++)
+        {
+            var name = response._embedded.events[i].name;
+            var url = response._embedded.events[i].url;
+
+            $("#tEvents").append('<a target="_blank" href="' + url + '">' + name + "</a><br/>");
+
+        }
+
+  });
+
+}
+
+//$(document).ready(ticketmaster());{
+
+//}
 
 
 
@@ -45,7 +78,7 @@ $(".btn-floating").on("click", function(){
   {
     //user entered bad query, reset page banner for next search
     $("#errorMsg").text("Spontaneity is a travel companion for spontaneous adventurers that want data-driven support for whimsical travel decision-making.  Enter a travel destination and a date range and Spontaneity will provide date-specific information on your potential destination.  This includes the weather forecast, local events, and excursions.");
-
+    flg = false;
   }
 
   var $input = $("#icon_prefix").val().trim(); //get input
@@ -83,8 +116,12 @@ $(".btn-floating").on("click", function(){
             cty = $input.substr(0,indx);
             stt = $input.substr(indx);
             stt = stt.slice(1);
+            flg2 = true;
         }
   }
-
-        console.log("City: " + cty + " State: " + stt); //debugging
+        if(!flg2)
+        {
+            cty = $input;
+        }
+       ticketmaster();
 });
