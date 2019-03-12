@@ -10,7 +10,6 @@ var config = {
 firebase.initializeApp(config);
 
 
-var location = "";
 
 var database = firebase.database();
 
