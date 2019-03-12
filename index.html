@@ -1,22 +1,149 @@
-:<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Project 1</title>
+    <title>Spontaneity</title>
+
+        <!-- Compiled and minified CSS from Materialize -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Icons from Materialize-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- Linked stylesheet -->
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <!-- JQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!-- Firebase -->
+        <script src=“https://www.gstatic.com/firebasejs/5.8.6/firebase.js“></script>
+        
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
 </head>
 <body>
 
+        <!-- Code for the background looping video -->
+    <video autoplay muted loop id="myVideo">
+            <source src="assets/images/Enter Adventure.mp4" type="video/webm">
+    </video>
+
+
+        <!-- Heading at the top of the page with title of the app and a description for the purpose/how to use it -->
+    <div class="container">
+        <div class="row">
+            <div class="col s12 top">
+                <h1 class="display">SPONTANEITY</h1>
+                <p class="content">Spontaneity is a travel companion for spontaneous adventurers that want data-driven support for whimsical travel decision-making.  Enter a travel destination and a date range and Spontaneity will provide date-specific information on your potential destination.  This includes the weather forecast, local events, and excursions. </p>
+            </div>
+        </div>
+    </div>
+
+        <!--- container div for field to enter travel destination -->
+
+
+        <!-- starting a new row for content -->
+    <div class="row">
+
+              <!-- form field for users to enter a location -->
+              <form class="col s11 location">
+                <a class="btn-floating pulse effectPulse"><i class="material-icons">airplanemode_active</i></a>
+                <input id="icon_prefix" type="text" class="validate">
+                <label for="icon_prefix" style="color: white; font-weight: bold; font-size: 15px">Enter Your Destination</label>
+            </form>
+
+    </div>
+    <!-- begin a new row -->
+      
+    <div class="row contentCards"> 
+
+        <!--- div for local weather info-->
+        <div class="col s4">
+            <div class="card small">
+                <div class="card-image weatherInfo">
+                    <img src="images/sample-1.jpg">
+                    <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <p>Destination Weather</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- div for local events -->
+        <div class="col s4">
+            <div class="card small">
+                <div class="card-image eventsInfo">
+                    <img src="images/sample-1.jpg">
+                    <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <p>Destination Events</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>                
+
+    
+    
+        <!-- div for hotels/food -->
+        <div class="col s4">
+            <div class="card small hotel_food">
+                <div class="card-image hotel_food_image">
+                    <img class="imgFood" src="images/sample-1.jpg">
+                    <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <p>Hotels and Food</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+    <!--Code for footer-->
+    <footer class="page-footer">
+        <div class="row footer">
+          <div class="col 25 s12">
+            <h5 class="white-text">Footer Content</h5>
+            <p class="grey-text text-lighten-4">We can use rows and columns here to organize the footer content.</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        Text
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      </div>
+    </footer>
 
 
 
+    <!-- minified CDN link for jQuery -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-
+    <!-- Compiled and minified JavaScript for Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- added the javascript file -->
     <script src="assets/js/main.js"></script>
 </body>
 </html>
