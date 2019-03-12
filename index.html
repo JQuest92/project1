@@ -14,11 +14,23 @@
         <!-- Linked stylesheet -->
         <link rel="stylesheet" href="assets/css/style.css">
 
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+        <script>
+        // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyDXmSJLyC2evDbgwIDzbSXAGs2OvXL70_Y",
+                authDomain: "spontaneity-dab93.firebaseapp.com",
+                databaseURL: "https://spontaneity-dab93.firebaseio.com",
+                projectId: "spontaneity-dab93",
+                storageBucket: "spontaneity-dab93.appspot.com",
+                messagingSenderId: "579190732334"
+                            };
+            firebase.initializeApp(config);
+</script>
+
         <!-- JQuery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-        <!-- Firebase -->
-        <script src=“https://www.gstatic.com/firebasejs/5.8.6/firebase.js“></script>
         
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -35,7 +47,7 @@
         <div class="row">
             <div class="col s12 top">
                 <h1 class="display">SPONTANEITY</h1>
-                <p class="content">Spontaneity is a travel companion for spontaneous adventurers that want data-driven support for whimsical travel decision-making.  Enter a travel destination and a date range and Spontaneity will provide date-specific information on your potential destination.  This includes the weather forecast, local events, and excursions. </p>
+                <p id="errorMsg" class="content">Spontaneity is a travel companion for spontaneous adventurers that want data-driven support for whimsical travel decision-making.  Enter a travel destination and a date range and Spontaneity will provide date-specific information on your potential destination.  This includes the weather forecast, local events, and excursions. </p>
             </div>
         </div>
     </div>
