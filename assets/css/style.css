@@ -1,0 +1,84 @@
+#myVideo {
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    z-index: 0;
+    position: absolute;
+  }
+
+.top {
+      z-index: 1;
+      opacity: .6;
+      font-weight: bold;
+      background-color: rgb(49, 49, 122);
+      color: cornsilk;
+  }
+
+.display {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  font-size: 20px;
+}
+
+.content {
+  margin-top: 0px;
+}
+
+.location {
+    background-color: rgb(180, 192, 69);
+    color: rgb(49, 49, 122);
+    z-index: 2;
+    opacity: .6;
+    width: 500px;
+    padding-right: 0px;
+
+}
+
+.effectPulse {
+      margin-top: 10px;
+  }
+
+
+
+form {
+    margin-right: 0px;
+    float: left;
+}
+
+.contentCards{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 0px;
+}
+
+.weather {
+    float: left;
+  }
+
+
+.events {
+}
+
+.hotel_food {
+}
+
+.page-footer {
+  margin-top: 0px;
+  background-color: teal;
+}
+
+.footer {
+  border-top: 10px;
+  border-color: rgb(7, 14, 14);
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
