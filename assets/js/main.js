@@ -60,6 +60,9 @@ function ticketmaster() {
 
 }
 
+
+
+
 //$(document).ready(ticketmaster());{
 
 //}
@@ -123,5 +126,25 @@ $(".btn-floating").on("click", function(){
         {
             cty = $input;
         }
+
+        database.ref().push({
+
+          city: cty,
+          dateAdded: firebase.database.ServerValue.TIMESTAMP
+        });
+  
+
+
+
        ticketmaster();
 });
+
+database.ref().on("child_added", function(childSnapshot) {
+
+  $("#errorMsg").append(childSnapshot.val().city + " ");
+
+});
+
+
+
+
