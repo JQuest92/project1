@@ -1,88 +1,86 @@
 #myVideo {
-    right: 0;
-    bottom: 0;
-    min-width: 100%; 
-    min-height: 100%;
-    z-index: 0;
-    position: absolute;
-  }
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  z-index: 0;
+  position: absolute;
+}
 
 .top {
-      z-index: 1;
-      opacity: .6;
-      font-weight: bold;
-      background-color: rgb(49, 49, 122);
-      color: cornsilk;
-  }
+    z-index: 1;
+    opacity: .6;
+    font-weight: bold;
+    background-color: rgb(49, 49, 122);
+    color: cornsilk;
+    margin-top: 5px;
+}
 
 .display {
-  margin-top: 5px;
-  margin-bottom: 0px;
-  font-size: 20px;
+margin-top: 5px;
+margin-bottom: 0px;
+font-size: 20px;
+font-family: 'Indie Flower', cursive;
 }
 
 .content {
-  margin-top: 0px;
+margin-top: 0px;
+font-family: 'Varela Round', sans-serif;
 }
 
 .location {
-    background-color: rgb(180, 192, 69);
-    color: rgb(49, 49, 122);
-    z-index: 2;
-    opacity: .6;
-    width: 500px;
-    padding-right: 0px;
+  background-color: rgb(180, 192, 69);
+  color: rgb(49, 49, 122);
+  z-index: 2;
+  opacity: .6;
+  padding-right: 0px;
+  font-family: 'Varela Round', sans-serif;
 
 }
 
 .effectPulse {
-      margin-top: 10px;
-  }
+    margin-top: 10px;
+}
 
 
 
 form {
-    margin-right: 0px;
-    float: left;
+  margin-right: 0px;
+  float: left;
 }
 
 .contentCards{
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 0px;
+margin-left: 10px;
+margin-right: 10px;
+margin-top: -15px;
+padding-bottom: 0px;
 }
 
 .weather {
-    float: left;
-  }
+  float: left;
+}
 
 
 .events {
 }
 
 #tEvents{
-  overflow: scroll;
+overflow: scroll;
+}
+
+#recentSearch{
+
+  background-color: white;
 }
 
 .hotel_food {
 }
 
 .page-footer {
-  margin-top: 0px;
-  background-color: teal;
+
+background-color: white;
+margin-top: 0px;
 }
 
-.footer {
-  border-top: 10px;
-  border-color: rgb(7, 14, 14);
-}
-
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-main {
-  flex: 1 0 auto;
+.footer-copyright {
 }

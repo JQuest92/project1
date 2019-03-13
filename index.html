@@ -17,21 +17,18 @@
         <!-- Firebase -->
         <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
         <script>
-        // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyDXmSJLyC2evDbgwIDzbSXAGs2OvXL70_Y",
-                authDomain: "spontaneity-dab93.firebaseapp.com",
-                databaseURL: "https://spontaneity-dab93.firebaseio.com",
-                projectId: "spontaneity-dab93",
-                storageBucket: "spontaneity-dab93.appspot.com",
-                messagingSenderId: "579190732334"
-                            };
-            firebase.initializeApp(config);
-</script>
+                // Initialize Firebase
+                    var config = {
+                        apiKey: "AIzaSyDXmSJLyC2evDbgwIDzbSXAGs2OvXL70_Y",
+                        authDomain: "spontaneity-dab93.firebaseapp.com",
+                        databaseURL: "https://spontaneity-dab93.firebaseio.com",
+                        projectId: "spontaneity-dab93",
+                        storageBucket: "spontaneity-dab93.appspot.com",
+                        messagingSenderId: "579190732334"
+                                    };
+                    firebase.initializeApp(config);
+        </script>
 
-        <!-- JQuery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -47,7 +44,7 @@
         <div class="row">
             <div class="col s12 top">
                 <h1 class="display">SPONTANEITY</h1>
-                <p id="errorMsg" class="content">Spontaneity is a travel companion for spontaneous adventurers that want data-driven support for whimsical travel decision-making.  Enter a travel destination and a date range and Spontaneity will provide date-specific information on your potential destination.  This includes the weather forecast, local events, and excursions. </p>
+                <p id="errorMsg" class="content">Spontaneity is a travel companion for spontaneous adventurers that want data-driven support for whimsical travel decision-making.  Enter a travel destination and a date range and Spontaneity will provide date-specific information on your potential destination.  This includes the weather forecast, local events, and excursions. Recent searches: </p>
             </div>
         </div>
     </div>
@@ -59,7 +56,7 @@
     <div class="row">
 
               <!-- form field for users to enter a location -->
-              <form class="col s11 location">
+              <form class="col l4 offset-l4 location">
                 <a class="btn-floating pulse effectPulse"><i class="material-icons">airplanemode_active</i></a>
                 <input id="icon_prefix" type="text" class="validate">
                 <label for="icon_prefix" style="color: white; font-weight: bold; font-size: 15px">Enter Your Destination</label>
@@ -80,8 +77,8 @@
                 <div class="card-content">
                     <p>Destination Weather</p>
                 </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
+                <div class="card-action z-depth-5">
+                    <a href="#"><i class="material-icons">link</i>This is a link</a>
                 </div>
             </div>
         </div>
@@ -97,8 +94,8 @@
                 <div class="card-content">
                     <p>Destination Events</p>
                 </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
+                <div class="card-action z-depth-5">
+                    <a href="#"><i class="material-icons">link</i>This is a link</a>
                 </div>
             </div>
         </div>                
@@ -115,35 +112,18 @@
                 <div class="card-content">
                     <p>Hotels and Food</p>
                 </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
+                <div class="card-action z-depth-5">
+                    <a href="#"><i class="material-icons">link</i>This is a link</a>
                 </div>
             </div>
-        </div>
-    
+        </div> 
     </div>
 
     <!--Code for footer-->
-    <footer class="page-footer">
-        <div class="row footer">
-          <div class="col 25 s12">
-            <h5 class="white-text">Footer Content</h5>
-            <p class="grey-text text-lighten-4">We can use rows and columns here to organize the footer content.</p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Links</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <footer class="page-footer z-depth-5">
       <div class="footer-copyright">
-        <div class="container">
-        Text
+        <div id="recentSearch" class="container">
+        
         <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
       </div>
     </footer>
@@ -155,7 +135,9 @@
 
     <!-- Compiled and minified JavaScript for Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- added the javascript file -->
-    <script src="assets/js/main.js"></script>
+
+        <!-- added the javascript file -->
+        <script src="assets/js/main.js"></script>
+
 </body>
 </html>
