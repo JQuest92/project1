@@ -42,7 +42,13 @@ font-family: 'Varela Round', sans-serif;
     margin-top: 10px;
 }
 
-
+.datepicker {
+  z-index: 2;
+  color: white;
+  font-style: bold;
+  opacity: .9;
+  text-align: center;
+}
 
 form {
   margin-right: 0px;
