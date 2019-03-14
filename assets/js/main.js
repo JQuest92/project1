@@ -60,17 +60,62 @@ function ticketmaster() {
 
 }
 
+// function to get the Zomato city ID
+function cityId() {
+  var ctyId  = "";
+  // Ajax GET request to Zomato API URL passing the cty (city) variable
+  $.ajax({
+    method: "GET",
+    crossDomain: true,
+    url: "https://developers.zomato.com/api/v2.1/cities?q=" + cty,
+    dataType: "json",
+    async: true,
+    headers: {
+    "user-key": "0a661374a6b58eb2fa84142d27fe81ca"
+    }, 
+    success: function(data) {
+      ctyId = data.location_suggestions[0].id;
+      // calling the Zomato function with the city Id passed in
+      zomato(ctyId);
+    }, 
+    error: function() {
+      console.log("error!");
+    }
+  })
+}
+// function to get the Zomato restaurant details for the city that the user searched for
+function zomato(ctyId) {
+  $("#tFood").empty();
+  // Ajax GET request to Zomato API URL passing the ctyId (city Id) variable
+  var queryURL = {
+    "collection_id": "1",
+    "url": "https://developers.zomato.com/api/v2.1/search?&city_id=" + ctyId + "&count=10",
+    "method": "GET",
+    "headers": {
+    "user-key": "fbf079a12e07d58c2e028ec67f02a6e1 ",
+    'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  }
+  $.ajax(queryURL, function() {
+  }).then(function(response) {
 
-
-
-//$(document).ready(ticketmaster());{
-
-//}
-
-
-
-
-
+    var results = response;
+    // loop to get 10 restaurants from the Zomato API
+    for (var i = 0; i < results.restaurants.length; i++) {
+      var restaurantPath = results.restaurants[i].restaurant;
+        var name = restaurantPath.name;
+        var cuisines = restaurantPath.cuisines;
+        var url = restaurantPath.menu_url;
+        // appending the restaurant name & their cuisine types
+        var newRow = $("<div>").append(
+          $("<div class='title'>").html('<a target="_blank" href="' + url + '">' + name + "</a>"),
+          $("<div class='cuisines'>").html("Cuisines: " + cuisines)
+        );
+      // appending the restaurant details to the div #tFood
+      $("#tFood").append(newRow);
+    };
+  });
+}
 
 //EVENT LISTENER FOR BUTTON--------------------
 
@@ -135,7 +180,7 @@ $(".btn-floating").on("click", function(){
   
 
 
-
+       cityId();      
        ticketmaster();
 });
 

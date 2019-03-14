@@ -68,12 +68,23 @@ padding-bottom: 0px;
 overflow: scroll;
 }
 
+#tFood{
+  overflow: scroll;
+}
+
 #recentSearch{
 
   background-color: white;
 }
 
-.hotel_food {
+.title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.cuisines {
+  font-size: 12px;
+  font-style: italic;
 }
 
 .page-footer {
