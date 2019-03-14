@@ -1,82 +1,100 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Spontaneity</title>
 
-        <!-- Compiled and minified CSS from Materialize -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified CSS from Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-        <!-- Icons from Materialize-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Icons from Materialize-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-        <!-- Linked stylesheet -->
-        <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Linked stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
 
-        <!-- Firebase -->
-        <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
-        <script>
-                // Initialize Firebase
-                    var config = {
-                        apiKey: "AIzaSyDXmSJLyC2evDbgwIDzbSXAGs2OvXL70_Y",
-                        authDomain: "spontaneity-dab93.firebaseapp.com",
-                        databaseURL: "https://spontaneity-dab93.firebaseio.com",
-                        projectId: "spontaneity-dab93",
-                        storageBucket: "spontaneity-dab93.appspot.com",
-                        messagingSenderId: "579190732334"
-                                    };
-                    firebase.initializeApp(config);
-        </script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+
+    
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDXmSJLyC2evDbgwIDzbSXAGs2OvXL70_Y",
+            authDomain: "spontaneity-dab93.firebaseapp.com",
+            databaseURL: "https://spontaneity-dab93.firebaseio.com",
+            projectId: "spontaneity-dab93",
+            storageBucket: "spontaneity-dab93.appspot.com",
+            messagingSenderId: "579190732334"
+        };
+        firebase.initializeApp(config);
+    </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
 
-        <!-- Code for the background looping video -->
+    <!-- Code for the background looping video -->
     <video autoplay muted loop id="myVideo">
-            <source src="assets/images/Enter Adventure.mp4" type="video/webm">
+        <source src="assets/images/Enter Adventure.mp4" type="video/webm">
     </video>
 
 
-        <!-- Heading at the top of the page with title of the app and a description for the purpose/how to use it -->
+    <!-- Heading at the top of the page with title of the app and a description for the purpose/how to use it -->
     <div class="container">
         <div class="row">
             <div class="col s12 top">
                 <h1 class="display">SPONTANEITY</h1>
-                <p id="errorMsg" class="content">Spontaneity is a travel companion for spontaneous adventurers that want data-driven support for whimsical travel decision-making.  Enter a travel destination and a date range and Spontaneity will provide date-specific information on your potential destination.  This includes the weather forecast, local events, and excursions. Recent searches: </p>
+                <p id="errorMsg" class="content">Spontaneity is a travel companion for spontaneous adventurers that want
+                    data-driven support for whimsical travel decision-making. Enter a travel destination and a date
+                    range and Spontaneity will provide date-specific information on your potential destination. This
+                    includes the weather forecast, local events, and excursions. Recent searches: </p>
             </div>
         </div>
     </div>
 
-        <!--- container div for field to enter travel destination -->
+    <!--- container div for field to enter travel destination -->
 
 
-        <!-- starting a new row for content -->
+    <!-- starting a new row for content -->
     <div class="row">
 
-              <!-- form field for users to enter a location -->
-              <form class="col l4 offset-l4 location">
-                <a class="btn-floating pulse effectPulse"><i class="material-icons">airplanemode_active</i></a>
-                <input id="icon_prefix" type="text" class="validate">
-                <label for="icon_prefix" style="color: white; font-weight: bold; font-size: 15px">Enter Your Destination</label>
-            </form>
+        <!-- form field for users to enter a location -->
+        <form class="col l4 offset-l4 location">
+            <a class="btn-floating pulse effectPulse"><i class="material-icons">airplanemode_active</i></a>
+            <input id="icon_prefix" type="text" class="validate">
+            <label for="icon_prefix" style="color: white; font-weight: bold; font-size: 15px">Enter Your
+                Destination</label>
+        </form>
 
     </div>
     <!-- begin a new row -->
-      
-    <div class="row contentCards"> 
+
+    <div class="row contentCards">
 
         <!--- div for local weather info-->
         <div class="col s4">
             <div class="card small">
                 <div class="card-image weatherInfo">
-                    <img src="images/sample-1.jpg">
+                    <!--<img src="images/sample-1.jpg">-->
+                    <div>
+                        <table id="weatherHolder">
+                            <thead>
+                            </thead>
+                            <tbody>
+                            </tbody>
+
+                        </table>
+                    </div>
                     <span class="card-title">Card Title</span>
                 </div>
                 <div class="card-content">
                     <p>Destination Weather</p>
                 </div>
+
                 <div class="card-action z-depth-5">
                     <a href="#"><i class="material-icons">link</i>This is a link</a>
                 </div>
@@ -98,46 +116,48 @@
                     <a href="#"><i class="material-icons">link</i>This is a link</a>
                 </div>
             </div>
-        </div>                
+        </div>
 
-        <!-- begin div for food -->    
+        <!-- begin div for food -->
         <div class="col s4">
-                <div class="card small">
-                    <div id="tFood" class="card-image foodInfo">
-                        <!-- <img src="images/sample-1.jpg"> -->
-                        <span class="card-title"></span>
-                    </div>
-                    <div class="card-content">
-                        <p>Best Restaurants</p>
-                    </div>
-                    <!-- <div class="card-action">
+            <div class="card small">
+                <div id="tFood" class="card-image foodInfo">
+                    <!-- <img src="images/sample-1.jpg"> -->
+                    <span class="card-title"></span>
+                </div>
+                <div class="card-content">
+                    <p>Best Restaurants</p>
+                </div>
+                <!-- <div class="card-action">
                         <a href="#">This is a link</a>
                     </div> -->
-                </div>
             </div>
-        <!-- end div for food -->  
+        </div>
+        <!-- end div for food -->
 
     </div>
 
     <!--Code for footer-->
     <footer class="page-footer z-depth-5">
-      <div class="footer-copyright">
-        <div id="recentSearch" class="container">
-        
-        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-      </div>
+        <div class="footer-copyright">
+            <div id="recentSearch" class="container">
+
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
     </footer>
 
 
     <!-- useless comment-->
     <!-- minified CDN link for jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
     <!-- Compiled and minified JavaScript for Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-        <!-- added the javascript file -->
-        <script src="assets/js/main.js"></script>
+    <!-- added the javascript file -->
+    <script src="assets/js/main.js"></script>
 
 </body>
+
 </html>
