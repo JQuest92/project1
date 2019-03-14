@@ -9,7 +9,10 @@ var flg2 = false;
 
 var database = firebase.database(); //database refrence
 
-
+// materialize datepicker
+$(document).ready(function(){
+  $('.datepicker').datepicker();
+});
 //FUNCTIONS-------------------
 
 //weather API AJAX call.
