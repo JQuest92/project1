@@ -23,7 +23,7 @@ function weather() {
   var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" +
     "q=" + cty + "&units=imperial&appid=" + weatherAPI;
 
-    $("#weatherHolder").empty();
+    // $("#weatherHolder").empty();
     
   $.ajax({
     url: queryURL,
@@ -40,25 +40,22 @@ function weather() {
 
     $("#weatherHolder > thead").append(headers);
 
+    console.log('first append');
 
-    for (var i = 0; i < response.length; i+8) {
-      var date = response.list[i].dt_txt.substring(0,10);
-      var weatherIcon = response.list[i].weather.icon;
-      var temp = response.list[i].main.temp;
+    for (var j = 0; j < response.list.length; j = j + 8) {
+      var date = response.list[j].dt_txt.substring(0,10);
+      var description = response.list[j].weather[0].description;
+      var temp = Math.floor(response.list[j].main.temp);
 
       var newDay = $("<tr>").append(
         $("<td>").text(date),
-        $("<td>").text(weatherIcon),
+        $("<td>").text(description),
         $("<td>").text(temp)
       );
       $("#weatherHolder > tbody").append(newDay);
     }
 
   });
-}
-
-$(document).ready(); {
-
 }
 
 //ticketmaster api call
@@ -201,7 +198,7 @@ $(".btn-floating").on("click", function () {
   });
 
 
-  weather()
+  weather();
   cityId();
   ticketmaster();
 });
