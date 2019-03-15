@@ -17,8 +17,8 @@ $(document).ready(function(){
 
 //weather API AJAX call.
 function weather() {
-   //$("#weatherHolder").empty();
-
+   $("#weatherHolder > thead").empty();
+   $("#weatherHolder > tbody").empty();
    if(cty === "New York City"){
       cty = "New York";
 
@@ -44,8 +44,6 @@ function weather() {
     )
 
     $("#weatherHolder > thead").append(headers);
-
-    console.log('first append');
 
     for (var j = 0; j < response.list.length; j = j + 8) {
       var date = response.list[j].dt_txt.substring(0,10);

@@ -81,60 +81,34 @@
 
         <!--- div for local weather info-->
         <div class="col s4">
-            <div class="card small">
-                <div id="tWeather" class="card-image weatherInfo">
-                    <!--<img src="images/sample-1.jpg">-->
-                    <div>
+            <div id="contentCards" class="card medium">
+                <span id="titles" class="card-title">Destination Weather</span>
+                    <span id="tWeather" class="card-content weatherInfo">
                         <table id="weatherHolder">
                             <thead>
                             </thead>
                             <tbody>
                             </tbody>
-
                         </table>
-                    </div>
-                    <span class="card-title">Card Title</span>
-                </div>
-                <div class="card-content">
-                    <p>Destination Weather</p>
-                </div>
-
-                <div class="card-action z-depth-5">
-                    <a href="#"><i class="material-icons">link</i>This is a link</a>
-                </div>
+                    </span>
             </div>
         </div>
 
-
         <!-- div for local events -->
         <div class="col s4">
-            <div class="card small">
-                <div id="tEvents" class="card-image eventsInfo">
-                    <img src="images/sample-1.jpg">
-                    <span class="card-title">Card Title</span>
-                </div>
-                <div class="card-content">
-                    <p>Destination Events</p>
-                </div>
-                <div class="card-action z-depth-5">
-                    <a href="#"><i class="material-icons">link</i>This is a link</a>
-                </div>
+            <div id="contentCards" class="card medium">
+                <span id="titles" class="card-title">Destination Events</span>
+                    <div id="tEvents" class="card-content eventsInfo">
+                    </div>
             </div>
         </div>
 
         <!-- begin div for food -->
         <div class="col s4">
-            <div class="card small">
-                <div id="tFood" class="card-image foodInfo">
-                    <!-- <img src="images/sample-1.jpg"> -->
-                    <span class="card-title"></span>
+            <div id="contentCards" class="card medium">
+                <span id="titles" class="card-title">Best Restaurants</span>
+                <div id="tFood" class="card-content foodInfo">
                 </div>
-                <div class="card-content">
-                    <p>Best Restaurants</p>
-                </div>
-                <!-- <div class="card-action">
-                        <a href="#">This is a link</a>
-                    </div> -->
             </div>
         </div>
         <!-- end div for food -->

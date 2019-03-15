@@ -16,6 +16,14 @@
     margin-top: 5px;
 }
 
+a {
+  color: rgb(95, 112, 18);
+}
+
+th {
+  color: rgb(124, 134, 31);
+}
+
 .display {
 margin-top: 5px;
 margin-bottom: 0px;
@@ -36,7 +44,6 @@ font-family: 'Varela Round', sans-serif;
   opacity: .6;
   padding-right: 0px;
   font-family: 'Varela Round', sans-serif;
-
 }
 
 .effectPulse {
@@ -56,27 +63,31 @@ form {
   float: left;
 }
 
-.contentCards{
-margin-left: 10px;
-margin-right: 10px;
-margin-top: -15px;
-padding-bottom: 0px;
+#contentCards{
+  /* background-color: white; */
+  background-color: rgb(209, 221, 103);
+  opacity: .999;
+}
+
+#titles{
+  text-align: center;
+  align-content: center; 
+  font-weight: bold;
+  color: rgb(49, 49, 122);
 }
 
 .weather {
   float: left;
 }
 
-
-.events {
-}
-
 #tWeather{
-  overflow:scroll;
+  overflow:auto;
+  height: 360px;
 }
 
 #tEvents{
-overflow: scroll;
+  overflow:auto;
+  height: 360px;
 }
 
 #tError{
@@ -88,7 +99,8 @@ overflow: scroll;
 }
 
 #tFood{
-  overflow: scroll;
+  overflow:auto;
+  height: 360px;
 }
 
 #recentSearch{
