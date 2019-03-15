@@ -3,16 +3,56 @@
 
 var cty = "";   //holds the city the user searched
 var stt = "";   //holds the state the user searched
+var dtPckd; 
 
 var flg = false; //boolean flag for input validation
 var flg2 = false;
 
 var database = firebase.database(); //database refrence
 
-// materialize datepicker
-$(document).ready(function(){
-  $('.datepicker').datepicker();
-});
+
+
+
+
+// materialize datepicker - materialize has moved away from JQuery so this is vanilla JS
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.datepicker'); //get elem
+  var instances = M.Datepicker.init(elems); //get instance of calendar
+  var doneBtn = document.querySelector('.datepicker-done');  //get calendar done button
+  doneBtn.addEventListener('click', grabDate)  //add even listener to it
+
+  function grabDate() { //nested function for event listener
+
+    dtPckd = "2019-"; //begin formating date for ticketmaster api filtering
+    
+    //console.log(dtPckd);
+
+    var str = instances.toString(); //get date selected
+    var rslt = str.split(" "); //split it
+
+   
+        //format date from materialize format to ticketmaster api
+        if (rslt[0] === "Jan") { dtPckd += "01-";}
+        else if (rslt[0] === "Feb") { dtPckd += "02-";}
+        else if (rslt[0] === "Mar") { dtPckd += "03-";}
+        else if (rslt[0] === "Apr") { dtPckd += "04-";}
+        else if (rslt[0] === "May") { dtPckd += "05-";}
+        else if (rslt[0] === "Jun") { dtPckd += "06-";}
+        else if (rslt[0] === "Jul") { dtPckd += "07-";}
+        else if (rslt[0] === "Aug") { dtPckd += "08-";}
+        else if (rslt[0] === "Sep") { dtPckd += "09-";}
+        else if (rslt[0] === "Oct") { dtPckd += "10-";}
+        else if (rslt[0] === "Nov") { dtPckd += "11-";}
+        else { dtPckd += "12-";}
+
+        dtPckd += rslt[1]; //get the day selected
+
+        var lgnth = dtPckd.length; //get length
+
+        dtPckd = dtPckd.substr(0,(lgnth - 1)); //remove comma at the en
+      //console.log(dtPckd);
+    }
+  });
 //FUNCTIONS-------------------
 
 //weather API AJAX call.
@@ -34,8 +74,8 @@ function weather() {
     url: queryURL,
     method: "GET"
   }).then(function (response) {
-    console.log(response);
-    console.log("Date:", response.list[10].dt_txt.substring(0,10));
+    //console.log(response);
+    //console.log("Date:", response.list[10].dt_txt.substring(0,10));
 
     var headers = $("<tr>").append(
       $("<th>").text("Date"),
@@ -68,6 +108,44 @@ function ticketmaster() {
   $("#tEvents").empty();
 
   // console.log("MADE IT HERE!");
+
+
+
+
+  if(dtPckd) //the user selected a date, so filter results
+  {
+    console.log("Made it to dtPckd if");
+    var apiKey = "AGoGvNzEmLC1H1XIJtVipXmDeRDKMPQT";
+
+    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cty + "&apikey=" + apiKey;
+  
+  
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function (response) {
+      console.log(response._embedded.events);
+      for (var i = 0; i < response._embedded.events.length; i++) {
+        if(dtPckd == response._embedded.events[i].dates.start.localDate) //filtering events by date
+        {
+          var name = response._embedded.events[i].name;
+          var url = response._embedded.events[i].url;
+          var img = response._embedded.events[i].images[0].url;
+    
+          //console.log("IMG: " + img);
+          $("#tEvents").append('<img src="' + img + '" alt="' + name + '" height="100" width="200"><br /><a target="_blank" href="' + url + '">' + name + '</a><br/>');
+  
+        }
+  
+      }//end for
+  
+    });//end ajax
+
+
+  }//end if
+else //no date selected, no filtering
+{
+  
   var apiKey = "AGoGvNzEmLC1H1XIJtVipXmDeRDKMPQT";
 
   var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cty + "&apikey=" + apiKey;
@@ -78,19 +156,20 @@ function ticketmaster() {
     method: "GET"
   }).then(function (response) {
     console.log(response._embedded.events);
+    console.log("Local Date: " + response._embedded.events[0].dates.start.localDate)
     for (var i = 0; i < response._embedded.events.length; i++) {
       var name = response._embedded.events[i].name;
       var url = response._embedded.events[i].url;
       var img = response._embedded.events[i].images[0].url;
 
-      console.log("IMG: " + img);
+      //console.log("IMG: " + img);
       $("#tEvents").append('<img src="' + img + '" alt="' + name + '" height="100" width="200"><br /><a target="_blank" href="' + url + '">' + name + '</a><br/>');
 
     }
 
-  });
-
-}
+  });//end ajax
+ }//end else
+}//end function
 
 // function to get the Zomato city ID
 function cityId() {
@@ -139,10 +218,10 @@ function zomato(ctyId) {
       var cuisines = restaurantPath.cuisines;
       var $url = restaurantPath.menu_url;
       var img = restaurantPath.featured_image;
-      console.log("IMG: " + img);
+      //console.log("IMG: " + img);
 
       if(img){
-        console.log("In if img");
+       // console.log("In if img");
         var newRow = $("<div>").append(
           '<img src="' + img + '" height="100" width="200">',
           $("<div class='title'>").html('<a target="_blank" href="' + $url + '">' + name + "</a>"),
