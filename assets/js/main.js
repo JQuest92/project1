@@ -81,8 +81,10 @@ function ticketmaster() {
     for (var i = 0; i < response._embedded.events.length; i++) {
       var name = response._embedded.events[i].name;
       var url = response._embedded.events[i].url;
+      var img = response._embedded.events[i].images[0].url;
 
-      $("#tEvents").append('<a target="_blank" href="' + url + '">' + name + "</a><br/>");
+      console.log("IMG: " + img);
+      $("#tEvents").append('<img src="' + img + '" alt="' + name + '" height="100" width="200"><br /><a target="_blank" href="' + url + '">' + name + '</a><br/>');
 
     }
 
@@ -128,19 +130,33 @@ function zomato(ctyId) {
   }
   $.ajax(queryURL, function () {
   }).then(function (response) {
-
     var results = response;
+    
     // loop to get 10 restaurants from the Zomato API
     for (var i = 0; i < results.restaurants.length; i++) {
       var restaurantPath = results.restaurants[i].restaurant;
       var name = restaurantPath.name;
       var cuisines = restaurantPath.cuisines;
-      var url = restaurantPath.menu_url;
+      var $url = restaurantPath.menu_url;
+      var img = restaurantPath.featured_image;
+      console.log("IMG: " + img);
+
+      if(img){
+        console.log("In if img");
+        var newRow = $("<div>").append(
+          '<img src="' + img + '" height="100" width="200">',
+          $("<div class='title'>").html('<a target="_blank" href="' + $url + '">' + name + "</a>"),
+          $("<div class='cuisines'>").html("Cuisines: " + cuisines)
+        );
+      }
+      else{
+        var newRow = $("<div>").append(
+          $("<div class='title'>").html('<a target="_blank" href="' + $url + '">' + name + "</a>"),
+          $("<div class='cuisines'>").html("Cuisines: " + cuisines)
+        );
+      }
       // appending the restaurant name & their cuisine types
-      var newRow = $("<div>").append(
-        $("<div class='title'>").html('<a target="_blank" href="' + url + '">' + name + "</a>"),
-        $("<div class='cuisines'>").html("Cuisines: " + cuisines)
-      );
+
       // appending the restaurant details to the div #tFood
       $("#tFood").append(newRow);
     };
