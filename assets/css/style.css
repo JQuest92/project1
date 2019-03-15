@@ -21,6 +21,7 @@ margin-top: 5px;
 margin-bottom: 0px;
 font-size: 20px;
 font-family: 'Indie Flower', cursive;
+text-align: center;
 }
 
 .content {
@@ -78,6 +79,14 @@ padding-bottom: 0px;
 overflow: scroll;
 }
 
+#tError{
+  z-index: 2;
+  color: white;
+  font-style: bold;
+  opacity: .9;
+  text-align: center;
+}
+
 #tFood{
   overflow: scroll;
 }
@@ -85,6 +94,7 @@ overflow: scroll;
 #recentSearch{
 
   background-color: white;
+  font-weight: bold;
 }
 
 .title {

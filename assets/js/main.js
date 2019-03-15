@@ -17,7 +17,12 @@ $(document).ready(function(){
 
 //weather API AJAX call.
 function weather() {
-  // $("#weatherHolder").empty();
+   //$("#weatherHolder").empty();
+
+   if(cty === "New York City"){
+      cty = "New York";
+
+   }
   //Need to change "Nashville" in the queryURL to the defined user input variable for city.  
   var weatherAPI = "8010786867558f69f90f520535222da2";
   var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" +
@@ -151,7 +156,7 @@ $(".btn-floating").on("click", function () {
 
   if (flg) {
     //user entered bad query, reset page banner for next search
-    $("#errorMsg").text("Spontaneity is a travel companion for spontaneous adventurers that want data-driven support for whimsical travel decision-making.  Enter a travel destination and a date range and Spontaneity will provide date-specific information on your potential destination.  This includes the weather forecast, local events, and excursions.");
+    $("#error").text("Spontaneity is a travel companion for spontaneous adventurers that want data-driven support for whimsical travel decision-making.  Enter a travel destination and a date range and Spontaneity will provide date-specific information on your potential destination.  This includes the weather forecast, local events, and excursions.");
     flg = false;
   }
 
@@ -165,7 +170,7 @@ $(".btn-floating").on("click", function () {
     //ensure there are no numbers in input, if so, ask for new input
     for (var j = 0; j < nums.length; j++) {
       if ($input[i] === nums[j]) {
-        $("#errorMsg").text("Please try again without using any numbers or special characters besides a comma.");
+        $("#error").text("Please try again without using any numbers or special characters besides a comma.");
         flg = true;
         return;
       }
@@ -173,7 +178,7 @@ $(".btn-floating").on("click", function () {
     //ensure there are no special characters in input, if so, ask for new input
     for (var k = 0; k < spclChars.length; k++) {
       if ($input[i] === spclChars[k]) {
-        $("#errorMsg").text("Please try again without using any numbers or special characters besides a comma.");
+        $("#error").text("Please try again without using any numbers or special characters besides a comma.");
         flg = true;
         return;
       }
@@ -188,6 +193,7 @@ $(".btn-floating").on("click", function () {
     }
   }
   if (!flg2) {
+    console.log("HERE!");
     cty = $input;
   }
 
@@ -198,16 +204,18 @@ $(".btn-floating").on("click", function () {
   });
 
 
-  weather();
   cityId();
   ticketmaster();
+  weather();
 });
 
-database.ref().on("child_added", function (childSnapshot) {
+database.ref().limitToLast(5).on("child_added", function (childSnapshot) {
 
-  $("#errorMsg").append(childSnapshot.val().city + " ");
+  $("#errorMsg").append(childSnapshot.val().city + ", ");
 
 });
+
+
 
 
 
