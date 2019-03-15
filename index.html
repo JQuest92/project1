@@ -48,10 +48,10 @@
         <div class="row">
             <div class="col s12 top">
                 <h1 class="display">SPONTANEITY</h1>
-                <p id="errorMsg" class="content">Spontaneity is a travel companion for spontaneous adventurers that want
+                <p  id="error" class="content">Spontaneity is a travel companion for spontaneous adventurers that want
                     data-driven support for whimsical travel decision-making. Enter a travel destination and a date
                     range and Spontaneity will provide date-specific information on your potential destination. This
-                    includes the weather forecast, local events, and excursions. Recent searches: </p>
+                    includes the weather forecast, local events, and excursions.</p>
             </div>
         </div>
     </div>
@@ -61,7 +61,9 @@
 
     <!-- starting a new row for content -->
     <div class="row">
-
+            <div id="tError" class="col s12 left">
+                <h6 id="errorMsg">Recent Searches: </h6>
+            </div>
         <!-- form field for users to enter a location -->
         <form class="col l4 offset-l4 location">
             <a class="btn-floating pulse effectPulse"><i class="material-icons">airplanemode_active</i></a>
