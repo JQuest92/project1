@@ -200,7 +200,7 @@ function zomato(ctyId) {
   // Ajax GET request to Zomato API URL passing the ctyId (city Id) variable
   var queryURL = {
     "collection_id": "1",
-    "url": "https://developers.zomato.com/api/v2.1/search?&city_id=" + ctyId + "&count=10",
+    "url": "https://developers.zomato.com/api/v2.1/search?&city_id=" + ctyId + "&count=20",
     "method": "GET",
     "headers": {
       "user-key": "fbf079a12e07d58c2e028ec67f02a6e1 ",
@@ -218,18 +218,22 @@ function zomato(ctyId) {
       var cuisines = restaurantPath.cuisines;
       var $url = restaurantPath.menu_url;
       var img = restaurantPath.featured_image;
+      var rating = restaurantPath.user_rating.aggregate_rating;
+
       //console.log("IMG: " + img);
 
       if(img){
        // console.log("In if img");
         var newRow = $("<div>").append(
           '<img src="' + img + '" height="100" width="200">',
+          $("<div class='waves-effect waves-green btn-small right'>").html(rating),
           $("<div class='title'>").html('<a target="_blank" href="' + $url + '">' + name + "</a>"),
           $("<div class='cuisines'>").html("Cuisines: " + cuisines)
         );
       }
       else{
         var newRow = $("<div>").append(
+          $("<div class='waves-effect waves-green btn-small right'>").html(rating),
           $("<div class='title'>").html('<a target="_blank" href="' + $url + '">' + name + "</a>"),
           $("<div class='cuisines'>").html("Cuisines: " + cuisines)
         );
