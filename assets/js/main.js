@@ -67,8 +67,6 @@ function weather() {
   var weatherAPI = "8010786867558f69f90f520535222da2";
   var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" +
     "q=" + cty + "&units=imperial&appid=" + weatherAPI;
-
-    // $("#weatherHolder").empty();
     
   $.ajax({
     url: queryURL,
@@ -80,20 +78,20 @@ function weather() {
     var headers = $("<tr>").append(
       $("<th>").text("Date"),
       $("<th>").text("Weather"),
-      $("<th>").text("Temp"),
+      $("<th>").text("Temperature"),
     )
 
     $("#weatherHolder > thead").append(headers);
 
     for (var j = 0; j < response.list.length; j = j + 8) {
-      var date = response.list[j].dt_txt.substring(0,10);
+      var date = moment(response.list[j].dt_txt.substring(0,10));  
       var description = response.list[j].weather[0].description;
       var temp = Math.floor(response.list[j].main.temp);
 
       var newDay = $("<tr>").append(
-        $("<td>").text(date),
-        $("<td>").text(description),
-        $("<td>").text(temp)
+        $("<td>").text(moment(date).format("MMMM Do")),
+        $("<td>").text(description.toUpperCase()),
+        $("<td>").text(temp + "\xB0")
       );
       $("#weatherHolder > tbody").append(newDay);
     }
