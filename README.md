@@ -15,6 +15,7 @@
 - APIs (Ajax calls)
 - Materialize (CSS Framework)
 - Firebase database storage
+- MomentJS
 
 **API's Utilized**-
 - OpenWeatherAPI
