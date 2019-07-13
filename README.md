@@ -24,3 +24,5 @@
 ---
 
 **Contributors**-Rob Suttles, Leigh Stevens, Missy Barringer, John Westbrooks
+
+![Spontaneity Homepage](/assets/images/spontaneity.JPG)
