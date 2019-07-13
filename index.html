@@ -18,7 +18,7 @@
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
 
-    
+
     <script>
         // Initialize Firebase
         var config = {
@@ -48,7 +48,7 @@
         <div class="row">
             <div class="col s12 top">
                 <h1 class="display">SPONTANEITY</h1>
-                <p  id="error" class="content">Spontaneity is a travel companion for spontaneous adventurers that want
+                <p id="error" class="content">Spontaneity is a travel companion for spontaneous adventurers that want
                     data-driven support for whimsical travel decision-making. Enter a travel destination and a date
                     range and Spontaneity will provide date-specific information on your potential destination. This
                     includes the weather forecast, local events, and excursions.</p>
@@ -61,9 +61,9 @@
 
     <!-- starting a new row for content -->
     <div class="row">
-            <div id="tError" class="col s12 left">
-                <h6 id="errorMsg">Recent Searches: </h6>
-            </div>
+        <div id="tError" class="col s12 left">
+            <h6 id="errorMsg">Recent Searches: </h6>
+        </div>
         <!-- form field for users to enter a location -->
         <form class="col l4 offset-l4 location">
             <a class="btn-floating pulse effectPulse"><i class="material-icons">airplanemode_active</i></a>
@@ -81,8 +81,9 @@
 
         <!--- div for local weather info-->
         <div class="col s4">
-            <div id="contentCards" class="card large">
-                <span id="titles" class="card-title">Destination Weather</span>
+            <div class="row">
+                <div id="contentCards" class="card large">
+                    <span id="titles" class="card-title">Destination Weather</span>
                     <span id="tWeather" class="card-content weatherInfo">
                         <table id="weatherHolder">
                             <thead>
@@ -91,6 +92,12 @@
                             </tbody>
                         </table>
                     </span>
+                </div>
+            </div>
+            <div class="row">
+                <div id="localTime">
+
+                </div>
             </div>
         </div>
 
@@ -98,8 +105,8 @@
         <div class="col s4">
             <div id="contentCards" class="card large">
                 <span id="titles" class="card-title">Destination Events</span>
-                    <div id="tEvents" class="card-content eventsInfo">
-                    </div>
+                <div id="tEvents" class="card-content eventsInfo">
+                </div>
             </div>
         </div>
 
@@ -127,6 +134,12 @@
 
     <!-- added the javascript file -->
     <script src="assets/js/main.js"></script>
+
+    <!--MOMENTJS CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+
+    <!--MOMEN TIMEZONE CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.23/moment-timezone.js"></script>
 
 </body>
 
